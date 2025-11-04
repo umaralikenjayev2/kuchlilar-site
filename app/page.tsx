@@ -1,86 +1,62 @@
-import CTAButton from "@/components/CTAButton";
+import Container from "@/components/ui/Container";
+import Section from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-      {/* HERO */}
-      <section className="text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-          Kuchlilar platformasiga xush kelibsiz 🚀
-        </h1>
-        <p className="section-text mt-4">
-          Intizom, sog‘lom odatlar, fokus va maqsadlarni ushlab turish uchun
-          bitta joy. Har kuni +1% o‘sish.
-        </p>
+    <>
+      <Section className="relative">
+        <Container>
+          <div className="text-center space-y-6">
+            <div className="inline-flex rounded-full ring-1 ring-white/10 px-3 py-1 text-sm text-zinc-300">
+              Har kuni +1% kuchliroq
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+              Intizom, odatlar va fokus — <span className="text-brand-500">bitta joyda</span>.
+            </h1>
+            <p className="mx-auto max-w-2xl text-zinc-300">
+              100 kunlik challenge, Pomodoro, o‘qish odati va progress panellari. Sizni tortadigan, lekin charchatmaydigan ritm.
+            </p>
+            <div className="flex items-center justify-center gap-3">
+              <Button href="https://app.kuchlilar.com">Boshlash → (Kirish)</Button>
+              <Link className="underline underline-offset-4 text-zinc-300 hover:text-white" href="/kuchli-100">
+                “Kuchli 100” nima?
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
-        <div className="mt-8 flex flex-col items-center gap-3">
-          <CTAButton />
-          <Link
-            href="/kuchli-100"
-            className="text-neutral-400 text-sm hover:text-white"
-          >
-            “Kuchli 100” nima?
-          </Link>
-        </div>
-      </section>
+      <Section>
+        <Container>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {t:"100 kunlik marafon",d:"Har kun sport/kitob/loyiha. Hisobot va badge’lar."},
+              {t:"Fokus rejimi",d:"Pomodoro, deep-work rejimlari, chalg‘itmaslik."},
+              {t:"Mutolaa o‘rmoni",d:"O‘qish odatini gamification bilan mustahkamlang."},
+            ].map((i)=>(
+              <div key={i.t} className="card p-6">
+                <div className="text-lg font-semibold">{i.t}</div>
+                <p className="mt-2 text-zinc-300">{i.d}</p>
+                <Link href="/kuchli-100" className="mt-4 inline-block text-brand-500">Batafsil →</Link>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
-      {/* FEATURES */}
-      <section className="mt-24 grid gap-8 md:grid-cols-3">
-        <FeatureCard
-          title="100 kunlik marafon"
-          desc="Har kuni sport, kitob, sog‘lom odat va loyiha. O‘zingni nazorat qil."
-          href="/kuchli-100"
-        />
-        <FeatureCard
-          title="Fokus rejimi"
-          desc="Pomodoro taymer va chalg‘imasdan ishlash rejimi. Maqsadga ishlash uchun."
-          href="https://app.kuchlilar.com/pomodoro"
-          external
-        />
-        <FeatureCard
-          title="Mutolaa o‘rmoni"
-          desc="Har kuni o‘qigan betlaring daraxt kabi o‘sadi. O‘qish odatini gamification orqali mustahkamla."
-          href="https://app.kuchlilar.com/forest"
-          external
-        />
-      </section>
-
-      {/* BLOG CTA */}
-      <section className="mt-24 rounded-2xl border border-neutral-800 bg-neutral-900/20 p-8 text-center">
-        <h2 className="section-headline">Blog</h2>
-        <p className="section-text mt-2">
-          Intizom, odatlar va produktivlik bo‘yicha qo‘llanmalar, tajribalar,
-          va real hayotdan darslar.
-        </p>
-        <Link
-          href="/blog"
-          className="btn-outline mt-6 inline-block rounded-xl"
-        >
-          Maqolalarni o‘qish →
-        </Link>
-      </section>
-    </div>
-  );
-}
-
-function FeatureCard(props: {
-  title: string;
-  desc: string;
-  href: string;
-  external?: boolean;
-}) {
-  return (
-    <a
-      href={props.href}
-      {...(props.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="block rounded-2xl border border-neutral-800 bg-neutral-900/20 p-6 hover:border-brand-500/40 hover:bg-neutral-900/40 transition-colors"
-    >
-      <div className="text-white font-semibold text-lg">{props.title}</div>
-      <div className="text-neutral-400 text-sm mt-2">{props.desc}</div>
-      <div className="text-brand-500 text-sm mt-4 inline-block">
-        Batafsil →
-      </div>
-    </a>
+      <Section>
+        <Container>
+          <div className="card p-10 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold">Bugun boshlaysizmi?</h2>
+            <p className="mt-3 text-zinc-300">5 daqiqadan start. Profil oching, birinchi maqsadni belgilang.</p>
+            <div className="mt-6">
+              <Button href="https://app.kuchlilar.com">Kirish</Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
+    </>
   );
 }

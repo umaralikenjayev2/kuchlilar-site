@@ -1,31 +1,34 @@
-// app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import "../styles/globals.css";
+import "./../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Kuchlilar — 1% o‘sish har kuni",
-  description: "Intizom, sog‘lom turmush va o‘sish uchun platforma.",
+  title: "Kuchlilar — Har kuni +1%",
+  description: "Intizom, sog‘lom odatlar, fokus va maqsadlar platformasi.",
   openGraph: {
     title: "Kuchlilar",
-    description: "Har kuni 1% kuchliroq",
+    description: "Har kuni +1% kuchliroq.",
     url: "https://kuchlilar.com",
     type: "website",
+    images: ["/og.png"],
   },
   twitter: { card: "summary_large_image" },
 };
 
-// Ixtiyoriy: kerak bo‘lsa Viewport (bu ham 'next' dan)
 export const viewport: Viewport = {
   width: "device-width",
-  initialScale: 1,
   themeColor: "#111827",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="uz">
-      <body className="min-h-screen bg-white text-gray-900">
-        {children}
+      <body>
+        <div className="min-h-screen flex flex-col">
+          {/* Header */}
+          {/* @ts-expect-error Server Component children */}
+          {children}
+          {/* Footer */}
+        </div>
       </body>
     </html>
   );

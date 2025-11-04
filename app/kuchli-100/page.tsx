@@ -1,38 +1,32 @@
-import Link from "next/link";
-import CTAButton from "@/components/CTAButton";
+import Container from "@/components/ui/Container";
+import Section from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
 
-export default function Kuchli100Page() {
+export default function K100Page() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16 md:py-24">
-      <h1 className="text-white text-3xl md:text-4xl font-bold tracking-tight">
-        “Kuchli 100 Kun” Challengi 💪
-      </h1>
-
-      <p className="section-text mt-4">
-        Maqsad: har kuni atigi 4 ta narsani bajarish.
-      </p>
-
-      <ul className="mt-6 space-y-4 text-neutral-300 text-base leading-relaxed">
-        <li>✅ Sport / tanani harakatga keltirish (30+ daqiqa)</li>
-        <li>📚 Kitob / bilim (10+ bet)</li>
-        <li>🥗 Sog‘lom odat (suv, uxlash, zararli ovqat yemaymiz va hokazo)</li>
-        <li>🚀 Loyiha / fokusli ish (haqiqiy orzuga ishlash)</li>
-      </ul>
-
-      <div className="mt-10 rounded-xl border border-neutral-800 bg-neutral-900/20 p-5 text-sm text-neutral-400">
-        Har kuning belgilanadi. Streak yo‘qotmaslik — bosh maqsad.
-        Intizom — hammasidan ustun.
-      </div>
-
-      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-        <CTAButton />
-        <Link
-          href="https://app.kuchlilar.com/today"
-          className="btn-outline text-center"
-        >
-          Men allaqachon ichidaman →
-        </Link>
-      </div>
-    </div>
+    <>
+      <Section>
+        <Container>
+          <h1 className="text-3xl md:text-4xl font-bold">“Kuchli 100” — intizom marafoni</h1>
+          <p className="mt-4 text-zinc-300 max-w-2xl">
+            100 kun davomida: sport, o‘qish, loyiha va sog‘lom odatlar. Progress paneli, badge’lar va jamiyat yordami.
+          </p>
+          <div className="mt-6"><Button href="https://app.kuchlilar.com">Boshlash</Button></div>
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <ol className="grid md:grid-cols-4 gap-6">
+            {["Ro‘yxatdan o‘ting","3 odat tanlang","Har kuni 20–40 daqiqa","Haftalik hisobot"].map((s,i)=>(
+              <li key={i} className="card p-6">
+                <div className="text-sm text-zinc-400">Qadam {i+1}</div>
+                <div className="mt-2 font-semibold">{s}</div>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+      {/* FAQ/Testimonials bloklarini ham qo‘shamiz */}
+    </>
   );
 }

@@ -2,36 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- global body styles (dark mode look) --- */
-body {
-  @apply bg-neutral-950 text-neutral-50 antialiased;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
+html, body { @apply bg-neutral-950 text-neutral-100 antialiased; }
 
-/* max-width container helper */
-.section-wrapper {
-  @apply mx-auto max-w-3xl px-5 py-16 md:px-24;
-}
+/* container helper */
+.container-page { @apply mx-auto max-w-6xl px-5 md:px-8; }
 
-/* shared text styles */
-.section-heading {
-  @apply text-white text-3xl md:text-4xl font-bold tracking-tight;
-}
+/* buttons */
+.btn-primary { @apply inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 font-semibold text-white shadow-lg shadow-brand-500/20 hover:bg-brand-600 transition; }
+.btn-outline { @apply inline-flex items-center gap-2 rounded-xl border border-neutral-700 px-5 py-3 font-semibold text-neutral-100 hover:bg-neutral-900 transition; }
 
-.section-text {
-  @apply text-neutral-400 text-base md:text-lg leading-relaxed;
-}
-
-/* simple button styles */
-.btn-primary {
-  @apply inline-block rounded-xl bg-brand-600 px-5 py-3 text-base font-semibold text-white hover:bg-brand-500 transition;
-}
-
-.btn-outline {
-  @apply inline-block rounded-xl border border-neutral-700 bg-transparent px-5 py-3 text-base font-semibold text-white hover:bg-neutral-800 transition;
-}
-
-/* footer background / border helpers */
-.footer-shell {
-  @apply border-t border-neutral-800 bg-neutral-950 text-neutral-500 text-sm;
-}
+/* glass card */
+.card-glass { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md; }

@@ -1,29 +1,42 @@
 {
-  "name": "kuchlilar-site",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "incremental": true
   },
-  "dependencies": {
-    "next": "15.5.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
-  "devDependencies": {
-    "typescript": "5.6.3",
-    "@types/node": "20.14.10",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "18.3.1",
-    "tailwindcss": "3.4.14",
-    "@tailwindcss/typography": "0.5.15",
-    "postcss": "8.4.47",
-    "autoprefixer": "10.4.20",
-    "eslint": "8.57.1",
-    "eslint-config-next": "15.5.4"
-  }
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
