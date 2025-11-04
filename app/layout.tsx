@@ -1,33 +1,32 @@
-import type { Metadata, Viewport } from "next";
-import "./../styles/globals.css";
+// app/layout.tsx
+import type { Metadata } from "next";
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Kuchlilar — Har kuni +1%",
-  description: "Intizom, sog‘lom odatlar, fokus va maqsadlar platformasi.",
+  title: "Kuchlilar — Intizom, odatlar, +1% o‘sish",
+  description:
+    "Kuchlilar: intizom, odatlar, fokus va +1% o‘sish uchun jamiyat. Challenge’lar, maqolalar, va foydali vositalar.",
+  metadataBase: new URL("https://kuchlilar.com"),
   openGraph: {
-    title: "Kuchlilar",
-    description: "Har kuni +1% kuchliroq.",
+    title: "Kuchlilar — Intizom, odatlar, +1% o‘sish",
+    description:
+      "Kuchlilar: intizom, odatlar, fokus va +1% o‘sish uchun jamiyat.",
     url: "https://kuchlilar.com",
     type: "website",
-    images: ["/og.png"],
   },
   twitter: { card: "summary_large_image" },
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  themeColor: "#111827",
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="uz">
-      <body>
+      <body className="bg-neutral-950 text-neutral-200 antialiased">
         <div className="min-h-screen flex flex-col">
-          {/* Header */}
-          {/* @ts-expect-error Server Component children */}
           {children}
-          {/* Footer */}
         </div>
       </body>
     </html>
