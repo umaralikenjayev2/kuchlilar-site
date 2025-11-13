@@ -1,35 +1,40 @@
-// app/sitemap.ts
 import type { MetadataRoute } from "next";
-import { posts, SITE_URL } from "./blog/posts";
+import { posts } from "./blog/posts";
+
+const SITE_URL = "https://kuchlilar.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
 
-  return [
+  // statik sahifalar
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${SITE_URL}/blog`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/kuchli-100`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
-
-    // BLOG POSTLAR
-    ...posts.map((p) => ({
-      url: `${SITE_URL}/blog/${p.slug}`,
-      lastModified: new Date(p.date),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    })),
   ];
+
+  // blog postlar
+  const blogPages: MetadataRoute.Sitemap = posts.map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPages];
 }
